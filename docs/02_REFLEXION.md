@@ -1,0 +1,3 @@
+# Reflexión
+
+El caso más importante para detectar un error de frontera es la cancelación con exactamente 2 horas de anticipación. La regla permite cancelar desde las 2 horas (`>= 2`). Al cambiarla temporalmente por `> 2`, la prueba `dosHorasEsElLimitePermitido` falló, mientras las demás pasaron. Esto demuestra que probar el valor exacto del límite detecta un error que podría pasar inadvertido con casos habituales.
