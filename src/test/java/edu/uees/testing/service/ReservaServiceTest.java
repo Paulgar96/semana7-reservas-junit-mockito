@@ -190,7 +190,28 @@ void reservaNoDisponibleNoSeGuardaNiNotifica() {
     assertEquals("Horario no disponible", error.getMessage());
     verify(repository, never()).guardar(any());
     verify(notificador, never()).enviarConfirmacion(any());
+}
+@Test
+void reservaNulaNoConsultaDependencias() {
+    // Arrange
+    DisponibilidadClient disponibilidad = mock(DisponibilidadClient.class);
+    ReservaRepository repository = mock(ReservaRepository.class);
+    Notificador notificador = mock(Notificador.class);
 
+    ReservaService servicio =
+        new ReservaService(disponibilidad, repository, notificador);
+
+    // Act
+    IllegalArgumentException error = assertThrows(
+        IllegalArgumentException.class,
+        () -> servicio.confirmar(null)
+    );
+
+    // Assert
+    assertEquals("Reserva obligatoria", error.getMessage());
+    verify(disponibilidad, never()).estaDisponible(any());
+    verify(repository, never()).guardar(any());
+    verify(notificador, never()).enviarConfirmacion(any());
 
 }
 }
