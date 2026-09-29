@@ -188,6 +188,7 @@ void reservaNoDisponibleNoSeGuardaNiNotifica() {
 
     // Assert
     assertEquals("Horario no disponible", error.getMessage());
+    assertEquals(EstadoReserva.PENDIENTE, reserva.getEstado());
     verify(repository, never()).guardar(any());
     verify(notificador, never()).enviarConfirmacion(any());
 }
