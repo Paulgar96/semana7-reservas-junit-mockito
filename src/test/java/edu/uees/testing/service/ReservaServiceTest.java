@@ -9,7 +9,16 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import edu.uees.testing.availability.DisponibilidadClient;
+import edu.uees.testing.domain.EstadoReserva;
+import edu.uees.testing.domain.Reserva;
+import edu.uees.testing.notification.Notificador;
+import edu.uees.testing.repository.ReservaRepository;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 /**
  * Punto de partida.
  * El estudiante debe ampliar esta suite durante las actividades.
@@ -137,6 +146,28 @@ void totalNegativoEsInvalido() {
 
     // Assert
     assertEquals("Total base inválido", error.getMessage());
+}
+    //
+@Test
+void reservaDisponibleSeConfirmaGuardaYNotifica() {
+    // Arrange
+    DisponibilidadClient disponibilidad = mock(DisponibilidadClient.class);
+    ReservaRepository repository = mock(ReservaRepository.class);
+    Notificador notificador = mock(Notificador.class);
+    when(disponibilidad.estaDisponible(any())).thenReturn(true);
+
+    ReservaService servicio =
+        new ReservaService(disponibilidad, repository, notificador);
+    Reserva reserva = new Reserva("R-001", "NORMAL");
+
+    // Act
+    servicio.confirmar(reserva);
+
+    // Assert
+    assertEquals(EstadoReserva.CONFIRMADA, reserva.getEstado());
+    verify(repository).guardar(reserva);
+    verify(notificador).enviarConfirmacion(reserva);
+
 }
 }
 
