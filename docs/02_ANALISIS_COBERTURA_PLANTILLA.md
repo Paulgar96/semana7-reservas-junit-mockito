@@ -40,3 +40,28 @@
   La cobertura de instrucciones aumentó de 87 % a 90 %.
   La cobertura de ramas permaneció en 83 %, porque cancelar()
   no contiene condiciones.
+  ## Actualización de cobertura — Ae6
+
+La suite ejecutó 17 pruebas, sin fallos ni errores. JaCoCo registró
+100 % de cobertura de instrucciones (138/138) y ramas (18/18).
+
+ReservaService alcanzó 100 % de instrucciones y ramas en confirmar,
+calcularTotal y puedeCancelar. En la versión final no existen métodos
+o ramas con menor cobertura de ejecución.
+
+Antes de Ae6, la cobertura global era aproximadamente 90 % de
+instrucciones y 83 % de ramas. Los comportamientos pendientes estaban
+en Reserva: validación del identificador, tipo nulo y métodos getters.
+
+Como resultado del análisis se incorporaron pruebas para rechazar
+identificadores nulos o en blanco y comprobar que un tipo nulo asigna
+NORMAL, conserva el identificador e inicia en estado PENDIENTE.
+Además, se reforzó el escenario sin disponibilidad para comprobar
+que la reserva permanece PENDIENTE.
+
+El 100 % de cobertura indica que se ejecutaron todas las instrucciones
+y ramas medidas; no garantiza que se verificaron todos los escenarios.
+Por ejemplo, todavía podría incorporarse una prueba que compruebe
+que el tipo "vip" en minúsculas recibe el descuento del 15 %.
+Aunque ejecuta una rama ya cubierta, protegería el comportamiento
+de comparación sin distinguir mayúsculas y minúsculas.
