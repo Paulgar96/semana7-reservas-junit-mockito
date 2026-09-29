@@ -212,6 +212,20 @@ void reservaNulaNoConsultaDependencias() {
     verify(disponibilidad, never()).estaDisponible(any());
     verify(repository, never()).guardar(any());
     verify(notificador, never()).enviarConfirmacion(any());
+}
+    @Test
+void cancelarReservaConfirmadaCambiaEstadoACancelada() {
+    // Arrange
+    Reserva reserva = new Reserva("R-003", "NORMAL");
+    reserva.confirmar();
+    assertEquals(EstadoReserva.CONFIRMADA, reserva.getEstado());
+
+    // Act
+    reserva.cancelar();
+
+    // Assert
+    assertEquals(EstadoReserva.CANCELADA, reserva.getEstado());
+
 
 }
 }
