@@ -14,7 +14,7 @@ import edu.uees.testing.domain.EstadoReserva;
 import edu.uees.testing.domain.Reserva;
 import edu.uees.testing.notification.Notificador;
 import edu.uees.testing.repository.ReservaRepository;
-
+import static org.mockito.Mockito.never;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -167,6 +167,30 @@ void reservaDisponibleSeConfirmaGuardaYNotifica() {
     assertEquals(EstadoReserva.CONFIRMADA, reserva.getEstado());
     verify(repository).guardar(reserva);
     verify(notificador).enviarConfirmacion(reserva);
+}
+    @Test
+void reservaNoDisponibleNoSeGuardaNiNotifica() {
+    // Arrange
+    DisponibilidadClient disponibilidad = mock(DisponibilidadClient.class);
+    ReservaRepository repository = mock(ReservaRepository.class);
+    Notificador notificador = mock(Notificador.class);
+    when(disponibilidad.estaDisponible(any())).thenReturn(false);
+
+    ReservaService servicio =
+        new ReservaService(disponibilidad, repository, notificador);
+    Reserva reserva = new Reserva("R-002", "NORMAL");
+
+    // Act
+    IllegalStateException error = assertThrows(
+        IllegalStateException.class,
+        () -> servicio.confirmar(reserva)
+    );
+
+    // Assert
+    assertEquals("Horario no disponible", error.getMessage());
+    verify(repository, never()).guardar(any());
+    verify(notificador, never()).enviarConfirmacion(any());
+
 
 }
 }
