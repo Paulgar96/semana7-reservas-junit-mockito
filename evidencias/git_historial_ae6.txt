@@ -1,0 +1,13 @@
+1f9199c (HEAD -> ae6/suite-pruebas) docs: registrar autorrevision tecnica y pendientes de Ae6
+0d978a6 docs: documentar ejecucion alcance y uso de IA en Ae6
+df79c40 docs: analizar cobertura y mejoras de la suite Ae6
+23f765c test: cubrir identificadores invalidos y tipo nulo en Reserva
+6801f24 test: comprobar estado pendiente cuando no hay disponibilidad
+a85fb25 docs: ampliar matriz de casos para Ae6
+8ec66c1 (origin/test/lab2-dobles-cobertura, origin/main, test/lab2-dobles-cobertura, main) docs: guardar evidencias de ejecucion y historial Git
+9589105 docs: agregar analisis de cobertura y reflexion stub mock
+acf1818 test: verificar cancelacion de reserva segun reporte JaCoCo
+c6879c1 test: rechazar reserva nula sin consultar dependencias
+beaaec3 test: impedir guardado y notificacion sin disponibilidad
+af733cc test: confirmar reserva disponible con stub y mocks
+010b345 (origin/master, master) chore: registrar linea base semana 7
