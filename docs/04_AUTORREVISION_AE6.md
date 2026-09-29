@@ -25,11 +25,11 @@
 - [x] El README incluye requisitos, ejecución y declaración de uso de IA.
 
 ## Pendientes antes de entregar
-- [ ] Revisar los archivos modificados para descartar datos sensibles.
-- [ ] Incorporar y verificar las evidencias de ejecución y cobertura.
-- [ ] Publicar la rama y crear el Pull Request hacia main.
-- [ ] Revisar Files changed y la descripción del Pull Request.
-- [ ] Registrar el enlace del Pull Request.
+- [x] Revisar los archivos modificados para descartar datos sensibles.
+- [x] Incorporar y verificar las evidencias de ejecución y cobertura.
+- [x] Publicar la rama y crear el Pull Request hacia main.
+- [x] Revisar Files changed y la descripción del Pull Request.
+- [x] Registrar el enlace del Pull Request.
 - [ ] Completar y revisar el reporte técnico final.
 
 ## Limitaciones
@@ -38,3 +38,8 @@ No comprueba una base de datos, disponibilidad ni correo reales.
 Quedan posibles mejoras para tipos en minúsculas y fallos del
 repositorio o del notificador. El 100 % de cobertura no garantiza
 que todos los comportamientos estén protegidos.
+## Pull Request
+https://github.com/Paulgar96/semana7-reservas-junit-mockito/pull/1
+
+Se revisaron los diez archivos del Pull Request y se marcaron
+como Viewed en GitHub.
